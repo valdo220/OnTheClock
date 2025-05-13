@@ -1,0 +1,36 @@
+.login {
+    height: 100vh;
+    align-content: center;
+}
+.header {
+    font-size: 1.75rem;
+    text-align: center;
+}
+.loginForm {
+    border: 2px solid gray;
+    width: 400px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 25px;
+}
+.emailAddress, .password {
+    margin: 15px auto 5px 40px;
+    font-size: 1.25rem
+}
+.emailAddressText, .passwordText {
+    border: 2px solid gray;
+    margin: 0 10px 10px 10px;
+}
+.loginButtonDiv {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+}
+.loginButton {
+    border: 2px solid gray;
+    margin: 10px auto;
+    text-align: center;
+    padding: 0 20px;
+}
