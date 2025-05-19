@@ -1,0 +1,18 @@
+.dashboard {
+    border-bottom: 2px solid gray;
+}
+.header {
+    font-size: 1.5rem;
+    margin-left: 30px
+}
+.dashboardContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.dashboardContent {
+    font-size: 1.5rem;
+    color: aqua;
+    border: 2px solid gray;
+}

@@ -1,42 +1,51 @@
 "use client";
+import { FormEvent } from "react";
 import styles from "./page.module.css";
-import Form from "next/form";
 
 export default function Register() {
-  function handleSubmit(formData: FormData) {
-    // formData.preventDefault();
-    const name = formData.get("name");
-    const emailAddress = formData.get("emailAddress");
-    const password = formData.get("password");
-    const confirmPassword = formData.get("confirmPassword");
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const formElements = form.elements as typeof form.elements & {
+      name: HTMLInputElement;
+      emailAddress: HTMLInputElement;
+      password: HTMLInputElement;
+      confirmPassword: HTMLInputElement;
+    };
 
-
-    if (password !== confirmPassword) {
-      alert("Passwords do not match");
-      console.log("Passwords do not match");
-      return;
-    }
+    const registerForm = {
+      name: formElements.name.value,
+      emailAddress: formElements.emailAddress.value,
+      password: formElements.password.value,
+      confirmPassword: formElements.confirmPassword.value,
+    };
+    const { name, emailAddress, password, confirmPassword } = registerForm;
+    console.log(name, emailAddress, password, confirmPassword);
 
     if (!name || !emailAddress || !password || !confirmPassword) {
       alert("Please fill in all fields");
       return;
-    } else console.log("Form submitted");
-        console.log("Name:", name);
-    console.log("EmailAddress:", emailAddress);
-    console.log("Password:", password);
-    console.log("ConfirmPassword:", confirmPassword);
-    for (const entry of formData.entries()) {
-        console.log(entry[0], entry[1]);
-      }
-    // for (const [key, value] of formData.entries()) {
-    //     console.log(key, value);
-    //   }
-  }
+    }
+    if (password !== confirmPassword) {
+      alert("Passwords do not match");
+      console.log("Passwords do not match");
+      return;
+    } else {
+      console.log("Form submitted");
+    }
 
+
+    fetch("/api/register", {
+      
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(registerForm),
+    })
+  }
   return (
     <div className={styles.register}>
       <p className={styles.header}>Create an account</p>
-      <Form action={handleSubmit} className={styles.registerForm}>
+      <form onSubmit={handleSubmit} className={styles.registerForm}>
         <label htmlFor="name" className={styles.name}>
           Name
         </label>
@@ -66,9 +75,11 @@ export default function Register() {
           className={styles.confirmPasswordText}
         ></input>
         <div className={styles.createAccountButtonDiv}>
-          <button type="submit" className={styles.createAccountButton}>Create account</button>
+          <button type="submit" className={styles.createAccountButton}>
+            Create account
+          </button>
         </div>
-      </Form>
+      </form>
     </div>
   );
 }
