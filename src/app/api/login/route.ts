@@ -9,7 +9,7 @@ export async function POST(req: Request) {
   try {
     const { email, password } = await req.json();
 
-    const user = await User.findOne({ where: { email } }) as any;
+    const user = (await User.findOne({ where: { email } })) as any;
 
     if (!user) {
       return NextResponse.json({ message: "Email not found" }, { status: 404 });
@@ -17,7 +17,10 @@ export async function POST(req: Request) {
 
     const isPasswordValid = await user.validatePassword(password);
     if (!isPasswordValid) {
-      return NextResponse.json({ message: "Invalid password" }, { status: 401 });
+      return NextResponse.json(
+        { message: "Invalid password" },
+        { status: 401 }
+      );
     }
 
     const token = sign(
@@ -40,9 +43,11 @@ export async function POST(req: Request) {
     });
 
     return res;
-
   } catch (err) {
     console.error("Login Error:", err);
-    return NextResponse.json({ message: "Internal server error" }, { status: 500 });
+    return NextResponse.json(
+      { message: "Internal server error" },
+      { status: 500 }
+    );
   }
 }

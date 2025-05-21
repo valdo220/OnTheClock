@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { FormEvent } from "react";
-import styles from "./page.module.css"; // optional if you use Tailwind or global CSS
+import styles from "./page.module.css";
 
 export default function Login() {
   const router = useRouter();
