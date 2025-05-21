@@ -8,21 +8,11 @@
   border-bottom: 2px solid gray;
   padding: 1rem 2rem;
   background-color: var(--background);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
 }
 
 .pageTitle {
   font-size: 1.75rem;
   font-weight: bold;
-}
-
-.welcome {
-  font-size: 1.25rem;
-  color: var(--foreground);
-  margin-top: 0.5rem;
 }
 
 .contentArea {
@@ -35,8 +25,7 @@
   padding: 2rem;
 }
 
-.createGroupButton,
-.viewGroupButton {
+.createGroupButton {
   font-weight: bold;
   cursor: pointer;
   border: 2px solid gray;
@@ -47,8 +36,7 @@
   transition: background-color 0.2s ease;
 }
 
-.createGroupButton:hover,
-.viewGroupButton:hover {
+.createGroupButton:hover {
   background-color: #efefef;
 }
 
@@ -57,24 +45,12 @@
     font-size: 1.5rem;
   }
 
-  .welcome {
-    margin-left: 0;
-    margin-top: 0.5rem;
-  }
-
   .contentArea {
     padding: 1rem;
     font-size: 1rem;
   }
 
-  .createGroupButton,
-  .viewGroupButton {
+  .createGroupButton {
     width: 100%;
-  }
-
-  .topBar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
   }
 }

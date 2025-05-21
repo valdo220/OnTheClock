@@ -1,20 +1,17 @@
 import styles from "./page.module.css";
-import { redirect } from "next/navigation";
 import ClientButton from "./ClientButton";
+import { redirect } from "next/navigation";
 import { getUserFromToken } from "@/utils/auth";
 
-export default async function Dashboard() {
-  const user = await getUserFromToken()
-
+export default async function GroupsPage() {
+  const user = await getUserFromToken();
   if (!user) {
-    redirect("/login")
+    redirect("/login");
   }
-
   return (
     <div className={styles.pageWrapper}>
       <div className={styles.topBar}>
-        <p className={styles.pageTitle}>Dashboard</p>
-        <p className={styles.welcome}>Welcome, {user.username}!</p>
+        <p className={styles.pageTitle}>Groups</p>
       </div>
       <div className={styles.contentArea}>
         <ClientButton />

@@ -1,28 +1,59 @@
 .home {
-    height: 100vh;
-    align-content: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
 }
+
 .welcome {
   font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.description {
+  font-size: 1.2rem;
+  margin: 0 auto 2rem;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+.buttonContainer {
   display: flex;
   justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
-.discription {
-  font-size: 1.25rem;
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-  text-align: center;
-}
-.loginDiv {
+
+.button {
+  padding: 0.75rem 1.5rem;
   border: 2px solid gray;
-  width: 400px;
-  margin: 50px auto;
-  display: flex;
-  justify-content: center;
+  border-radius: 4px;
+  font-weight: bold;
+  text-decoration: none;
+  color: inherit;
+  background-color: transparent;
+  transition: background-color 0.2s ease;
 }
-.createUserButton,
-.loginButton {
-  margin: 20px 10px;
-  text-align: center;
+
+.button:hover {
+  background-color: #efefef;
+}
+
+@media (max-width: 500px) {
+  .buttonContainer {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  .description {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
 }
